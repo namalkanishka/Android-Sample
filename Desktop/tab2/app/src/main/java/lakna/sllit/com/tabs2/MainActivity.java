@@ -79,11 +79,19 @@ public class MainActivity extends AppCompatActivity implements AddFragment.onAdd
         //update the tabs when press save button
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         adapter.addFragment(new AddFragment(), "Add");
-        adapter.addFragment(new UpdateFragment(), "Update");
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("students array list", stdArray);
+
+        //set view fragment  Arguments(students hash map object )
+        UpdateFragment updateStudents = new UpdateFragment();
+        updateStudents.setArguments(bundle);
+
+        adapter.addFragment(updateStudents, "Update");
+
+
 
         //set view fragment  Arguments(students hash map object )
         ViewFragment viewStudents = new ViewFragment();
